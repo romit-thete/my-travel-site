@@ -21,4 +21,4 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           source: "index.html"
-          target: "/var/www/html"
+          target: "/home/ubuntu/app"
