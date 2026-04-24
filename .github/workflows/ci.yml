@@ -9,18 +9,26 @@ on:
       - main
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Check if index.html exists
+        run: |
+          if [ ! -f index.html ]; then
+            echo "❌ index.html not found!"
+            exit 1
+          else
+            echo "✅ index.html exists"
+          fi
       
-      - name: Print message
-        run: echo "CI pipeline is running 🚀"
+      - name: Basic HTML Check
+        run: |
+          if ! grep -q "<html>" index.html; then
+            echo "❌ Missing <html> tag"
+            exit 1
+          fi
 
-      - name: Show current directory
-        run: pwd
-
-      - name: List files
-        run: ls -la
