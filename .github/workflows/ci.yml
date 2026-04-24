@@ -32,3 +32,9 @@ jobs:
             exit 1
           fi
 
+      - name: Check title exists
+        run: |
+          if ! grep -q "<title>" index.html; then
+            echo "❌ Missing title"
+            exit 1
+          fi
