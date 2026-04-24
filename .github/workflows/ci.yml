@@ -1,0 +1,23 @@
+---
+
+name: My First CI pipeline
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Print message
+        run: echo "CI pipeline is running 🚀"
+      
+      - name: List files
+        run: ls -la
