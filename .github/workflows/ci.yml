@@ -18,6 +18,9 @@ jobs:
       
       - name: Print message
         run: echo "CI pipeline is running 🚀"
-      
+
+      - name: Show current directory
+        run: pwd
+
       - name: List files
         run: ls -la
