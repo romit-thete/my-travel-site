@@ -20,7 +20,7 @@ jobs:
       - name: Copy files to server
         uses: appleboy/scp-action@v0.1.7
         with:
-          hosts: ${{ secrets.SERVER_IP }}
+          host: ${{ secrets.SERVER_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           source: "."
