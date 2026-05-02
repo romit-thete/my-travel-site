@@ -23,7 +23,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
-          source: "bootstrap.sh,deploy.sh,webapp"
+          source: "bootstrap.sh,deploy.sh,webapp,nginx.conf"
           target: "/home/ubuntu/app"
 
       - name: Restart container on server
