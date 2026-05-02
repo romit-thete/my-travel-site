@@ -24,7 +24,7 @@ jobs:
           target: "/home/ubuntu/app"
 
       - name: Build Docker image
-        run: docker build -t travel-site /home/ubuntu/app/webapp
+        run: docker build -t travel-site /home/ubuntu/app/webapp/.
       
       - name: Restart container on server
         uses: appleboy/ssh-action@v1.0.3
