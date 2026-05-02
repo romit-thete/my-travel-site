@@ -17,6 +17,7 @@ sudo systemctl enable docker
 
 echo "Adding ubuntu user to the docker group..."
 sudo usermod -aG docker ubuntu
+newgrp docker
 
 echo "Creating app directory..."
 mkdir -p /home/ubuntu/app
