@@ -3,7 +3,7 @@
 docker stop travel-site || true
 docker rm travel-site || true
 
-docker build -t travel-site /home/ubuntu/app
+docker build -t travel-site /home/ubuntu/app/webapp
 docker run -d -p 80:80 \
   --name travel-site \
   --restart always \

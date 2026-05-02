@@ -14,18 +14,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Build Docker image
-        run: docker build -t travel-site .
-      
       - name: Copy files to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
-          source: "bootstrap.sh,deploy.sh,Dockerfile,health.html,index.template.html,css"
+          source: "bootstrap.sh,deploy.sh,webapp"
           target: "/home/ubuntu/app"
 
+      - name: Build Docker image
+        run: docker build -t travel-site /home/ubuntu/app/webapp
+      
       - name: Restart container on server
         uses: appleboy/ssh-action@v1.0.3
         with:
