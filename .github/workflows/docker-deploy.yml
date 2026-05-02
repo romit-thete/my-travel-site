@@ -26,6 +26,16 @@ jobs:
           source: "bootstrap.sh,deploy.sh,webapp,nginx.template.conf"
           target: "/home/ubuntu/app"
 
+      - name: Install necessary binaries on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/ubuntu/app
+            ./bootstrap.sh
+
       - name: Restart container on server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -34,4 +44,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/ubuntu/app
-            ./bootstrap.sh && ./deploy.sh ${{ secrets.SERVER_IP }}
+            ./deploy.sh ${{ secrets.SERVER_IP }}
