@@ -16,25 +16,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check if index.html exists
+      - name: Check if index.template.html exists
         run: |
-          if [ ! -f index.html ]; then
-            echo "❌ index.html not found!"
+          if [ ! -f index.template.html ]; then
+            echo "❌ index.template.html not found!"
             exit 1
           else
-            echo "✅ index.html exists"
+            echo "✅ index.template.html exists"
           fi
       
       - name: Basic HTML Check
         run: |
-          if ! grep -q "<html>" index.html; then
+          if ! grep -q "<html>" index.template.html; then
             echo "❌ Missing <html> tag"
             exit 1
           fi
 
       - name: Check title exists
         run: |
-          if ! grep -q "<title>" index.html; then
+          if ! grep -q "<title>" index.template.html; then
             echo "❌ Missing title"
             exit 1
           fi
