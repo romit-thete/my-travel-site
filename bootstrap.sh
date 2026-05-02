@@ -24,4 +24,7 @@ mkdir -p /home/ubuntu/app
 echo "Docker version:"
 docker --version
 
+echo "CertBot version:"
+certbot --version
+
 echo "Bootstrap complete 🚀"
