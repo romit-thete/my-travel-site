@@ -14,6 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
+      - name: Build Docker image
+        run: docker build -t travel-site webapp/.
+      
       - name: Copy files to server
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -23,9 +26,6 @@ jobs:
           source: "bootstrap.sh,deploy.sh,webapp"
           target: "/home/ubuntu/app"
 
-      - name: Build Docker image
-        run: docker build -t travel-site /home/ubuntu/app/webapp/.
-      
       - name: Restart container on server
         uses: appleboy/ssh-action@v1.0.3
         with:
